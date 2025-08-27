@@ -4,7 +4,7 @@ session_start();
 header('Content-Type: application/json; charset=utf-8');
 
 // Configuración de email
-$to_email = "pgbpowerelectronics@gmail.com";
+$to_email = "azubair64@gmail.com";
 $from_name = "PGB Website Contact Form";
 $subject_prefix = "[PGB Contact] ";
 
