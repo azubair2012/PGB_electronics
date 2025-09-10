@@ -171,11 +171,15 @@
         }
     });
 
-    // Contact Form Handler
+    // Contact Form Handler with EmailJS
     $(document).ready(function() {
         const contactForm = $('#contactForm');
         const submitBtn = $('#submit-btn');
         const formMessages = $('#form-messages');
+        
+        // Initialize EmailJS with your public key
+        // Replace 'YOUR_PUBLIC_KEY' with your actual EmailJS public key
+        emailjs.init('YOUR_PUBLIC_KEY');
         
         if (contactForm.length > 0) {
             contactForm.on('submit', function(e) {
@@ -195,33 +199,30 @@
                 return;
             }
             
-            // Create FormData object
-            const formData = new FormData(contactForm[0]);
+            // Prepare template parameters for EmailJS
+            const templateParams = {
+                from_name: $('#nombre').val().trim(),
+                from_email: $('#email').val().trim(),
+                phone: $('#telefono').val().trim() || 'No proporcionado',
+                subject: $('#asunto').val().trim(),
+                message: $('#mensaje').val().trim(),
+                to_email: 'pgbpowerelectronics@gmail.com' // Target email
+            };
             
-            // Send AJAX request
-            $.ajax({
-                url: 'contact-handler.php',
-                type: 'POST',
-                data: formData,
-                processData: false,
-                contentType: false,
-                dataType: 'json',
-                success: function(data) {
+            // Send email using EmailJS
+            // Replace 'YOUR_SERVICE_ID' and 'YOUR_TEMPLATE_ID' with your actual IDs
+            emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', templateParams)
+                .then(function(response) {
                     toggleLoadingState(false);
-                    
-                    if (data.success) {
-                        showMessage(data.message, 'success');
-                        contactForm[0].reset();
-                    } else {
-                        showMessage(data.message, 'error');
-                    }
-                },
-                error: function(xhr, status, error) {
+                    showMessage('¡Mensaje enviado correctamente! Nos pondremos en contacto pronto.', 'success');
+                    contactForm[0].reset();
+                    console.log('Email sent successfully:', response);
+                })
+                .catch(function(error) {
                     toggleLoadingState(false);
-                    showMessage('Error de conexión. Por favor intente nuevamente.', 'error');
-                    console.error('Form submission error:', error);
-                }
-            });
+                    showMessage('Error al enviar el mensaje. Por favor intente nuevamente o contáctenos directamente.', 'error');
+                    console.error('EmailJS error:', error);
+                });
         }
         
         function validateContactForm() {
