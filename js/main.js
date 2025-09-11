@@ -179,7 +179,7 @@
         
         // Initialize EmailJS with your public key
         // Replace 'YOUR_PUBLIC_KEY' with your actual EmailJS public key
-        emailjs.init('YOUR_PUBLIC_KEY');
+        emailjs.init('bpiE86hYaPd1agbT9');
         
         if (contactForm.length > 0) {
             contactForm.on('submit', function(e) {
@@ -201,17 +201,17 @@
             
             // Prepare template parameters for EmailJS
             const templateParams = {
-                from_name: $('#nombre').val().trim(),
-                from_email: $('#email').val().trim(),
-                phone: $('#telefono').val().trim() || 'No proporcionado',
-                subject: $('#asunto').val().trim(),
-                message: $('#mensaje').val().trim(),
-                to_email: 'pgbpowerelectronics@gmail.com' // Target email
+                name: $('#name').val().trim(),
+                email: $('#email').val().trim(),
+                phone: $('#phone').val().trim() || 'No proporcionado',
+                subject: $('#subject').val().trim(),
+                message: $('#message').val().trim(),
+                to_email: 'azubair64@gmail.com' // Target email
             };
             
             // Send email using EmailJS
             // Replace 'YOUR_SERVICE_ID' and 'YOUR_TEMPLATE_ID' with your actual IDs
-            emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', templateParams)
+            emailjs.send('service_2xlwjum', 'template_yh03g65', templateParams)
                 .then(function(response) {
                     toggleLoadingState(false);
                     showMessage('¡Mensaje enviado correctamente! Nos pondremos en contacto pronto.', 'success');
@@ -226,10 +226,10 @@
         }
         
         function validateContactForm() {
-            const nombre = $('#nombre').val().trim();
+            const nombre = $('#name').val().trim();
             const email = $('#email').val().trim();
-            const asunto = $('#asunto').val().trim();
-            const mensaje = $('#mensaje').val().trim();
+            const asunto = $('#subject').val().trim();
+            const mensaje = $('#message').val().trim();
             
             // Clear previous error states
             $('.form-control').removeClass('is-invalid');
@@ -239,7 +239,7 @@
             
             // Validate nombre
             if (nombre.length < 2) {
-                $('#nombre').addClass('is-invalid');
+                $('#name').addClass('is-invalid');
                 errorMessage = 'El nombre debe tener al menos 2 caracteres';
                 isValid = false;
             }
@@ -253,14 +253,14 @@
             
             // Validate asunto
             if (asunto.length < 5) {
-                $('#asunto').addClass('is-invalid');
+                $('#subject').addClass('is-invalid');
                 errorMessage = 'El asunto debe tener al menos 5 caracteres';
                 isValid = false;
             }
             
             // Validate mensaje
             if (mensaje.length < 20) {
-                $('#mensaje').addClass('is-invalid');
+                $('#message').addClass('is-invalid');
                 errorMessage = 'El mensaje debe tener al menos 20 caracteres';
                 isValid = false;
             }
@@ -310,7 +310,7 @@
         }
         
         // Real-time validation feedback
-        $('#nombre, #email, #asunto, #mensaje').on('input blur', function() {
+        $('#name, #email, #subject, #message').on('input blur', function() {
             $(this).removeClass('is-invalid');
         });
     });
