@@ -454,7 +454,7 @@ The site is Spanish with a few English stragglers in the template (e.g., the spi
 
 ### 10e. Mobile menu polish
 
-Verify the hamburger menu opens cleanly on all phones and that the 24/7 number in the header wraps gracefully on narrow screens (currently a long string that can overflow). Minor, but it's the first thing a mobile visitor touches.
+Verify the hamburger menu opens cleanly on all phones and that the emergency number in the header wraps gracefully on narrow screens (currently a long string that can overflow). Minor, but it's the first thing a mobile visitor touches.
 
 ---
 
