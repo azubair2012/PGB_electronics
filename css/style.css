@@ -69,6 +69,11 @@
 }
 
 /*** Navbar ***/
+.navbar-brand img {
+  height: 60px;
+  width: auto;
+}
+
 .top-bar {
   height: 75px;
   padding: 0 4rem;
