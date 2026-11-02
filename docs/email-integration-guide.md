@@ -558,7 +558,7 @@ de contacto del sitio web de PGB Electrónica Industrial.
 - **Phone:** +56932735031
 - **Address:** José Antonio Valdés 2482 Cia Baja, La Serena, Coquimbo
 - **Website Language:** Spanish
-- **Business Hours:** Mon-Fri: 09:00-18:00, Sat-Sun: 09:00-14:00
+- **Business Hours:** Mon-Fri: 09:00-19:00, Sat: 09:00-16:00
 
 ---
 
